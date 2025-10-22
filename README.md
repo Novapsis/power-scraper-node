@@ -46,3 +46,50 @@ Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/
 ## License
 
 [MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+
+## Probar localmente con n8n en Docker (instrucciones en español)
+
+Si ejecutas n8n dentro de Docker, puedes probar tu nodo personalizado de dos maneras principales: montando la carpeta `dist` como volumen o copiando los archivos dentro del contenedor.
+
+1) Opción — Montar `dist` como volumen (recomendado para desarrollo rápido)
+
+  - Construye el paquete y los iconos locales:
+
+  ```bash
+  npm run build
+  ```
+
+  - Inicia n8n en Docker montando la carpeta `dist` de tu proyecto en `/home/node/.n8n/custom` (o en la ruta que uses para cargar nodes locales). Un ejemplo con `docker run`:
+
+  ```bash
+  docker run -it --rm \
+    --name n8n-local \
+    -p 5678:5678 \
+    -v "$(pwd)/dist:/home/node/.n8n/custom" \
+    n8nio/n8n:latest
+  ```
+
+  - Alternativamente, si usas `docker-compose`, monta el volumen en la configuración del servicio `n8n` apuntando a la carpeta `dist`.
+
+  - Reinicia n8n y abre la UI (http://localhost:5678). Deberías ver tu nodo `Power Scraper` en el panel de nodos; el icon se cargará desde `dist/nodes/PowerScraper/PowerScraper.png`.
+
+2) Opción — Copiar los archivos al contenedor (útil si no quieres montar volúmenes)
+
+  - Construye primero `dist`:
+  ```bash
+  npm run build
+  ```
+
+  - Copia los archivos dentro del contenedor (suponiendo que ya tienes un contenedor n8n en ejecución llamado `n8n`):
+
+  ```bash
+  docker cp dist/. n8n:/home/node/.n8n/custom
+  docker restart n8n
+  ```
+
+Notas y recomendaciones
+ - Asegúrate de que `package.json` en `dist` (si existe) esté correctamente configurado para que n8n detecte los nodes; en este starter el proceso `npm run build` compila TS y copia los icons a `dist`.
+ - Si no ves el nodo en la UI, revisa los logs del contenedor n8n y revisa permisos en los archivos copiados.
+ - El icon del nodo ahora es `PowerScraper.png` y está incluido en `dist/nodes/PowerScraper/PowerScraper.png` tras correr `npm run build`.
+
+Si quieres, puedo generar un ejemplo `docker-compose.yml` mínimo que monte `dist` y arranque n8n listo para pruebas.

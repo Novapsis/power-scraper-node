@@ -1,28 +1,28 @@
 {
-  "name": "n8n-nodes-<...>",
-  "version": "0.1.0",
-  "description": "",
+  "name": "@novapsis/n8n-nodes-novapsis",
+  "version": "0.3.7",
+  "description": "Un nodo para n8n que se conecta al microservicio Power Scraper para extraer el HTML de cualquier página web.",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "scraper",
+    "novapsis",
+    "web scraping"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://www.novapsis.com",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Antonio Lopez",
+    "email": "novapsiscorp@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
-  },
-  "engines": {
-    "node": ">=20.15"
+    "url": "git+https://github.com/tu-usuario-de-github/n8n-novapsis-nodes.git"
   },
   "main": "index.js",
   "scripts": {
-    "build": "npx rimraf dist && tsc && gulp build:icons",
+    "build": "tsc && gulp build:icons",
     "dev": "tsc --watch",
-    "format": "prettier nodes credentials --write",
+    "format": "prettier --write nodes credentials",
     "lint": "eslint nodes credentials package.json",
     "lintfix": "eslint nodes credentials package.json --fix",
     "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
@@ -33,12 +33,10 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/NovapsisApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/PowerScraper/PowerScraper.node.js"
     ]
   },
   "devDependencies": {
@@ -46,10 +44,10 @@
     "eslint": "^8.57.0",
     "eslint-plugin-n8n-nodes-base": "^1.16.3",
     "gulp": "^5.0.0",
+    "n8n-core": "^1.16.0",
+    "n8n-workflow": "^1.16.0",
     "prettier": "^3.5.3",
     "typescript": "^5.8.2"
   },
-  "peerDependencies": {
-    "n8n-workflow": "*"
-  }
+  "packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad"
 }

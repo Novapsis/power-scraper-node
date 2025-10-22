@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    volumes:
+      # Monta la carpeta dist del proyecto dentro del contenedor para que n8n cargue nodes locales
+      - ./dist:/home/node/.n8n/custom
+      # Persistencia de datos de n8n (workflows, credenciales) en ./data/n8n
+      - ./data/n8n:/home/node/.n8n
+    environment:
+      - N8N_HOST=0.0.0.0
+      - N8N_PORT=5678
+      - GENERIC_TIMEZONE=UTC
+      # Basic auth activado por defecto para pruebas locales (cambia usuario/clave en producción)
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=admin
