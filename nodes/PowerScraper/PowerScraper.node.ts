@@ -7,6 +7,7 @@ import {
 	IHttpRequestOptions,
 	NodeOperationError,
 } from 'n8n-workflow';
+import { icon } from './PowerScraper.icon';
 
 
 
@@ -14,7 +15,7 @@ export class PowerScraper implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Power Scraper',
 		name: 'powerScraper',
-	icon: { light: 'file:PowerScraper.png', dark: 'file:PowerScraper.png' },
+		icon, 
 		group: ['Novapsis'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
