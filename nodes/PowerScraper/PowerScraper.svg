@@ -1,10 +1,23 @@
-<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- The 4 swirling blades -->
+  <path d="M50 50 L 50 0 A 50 50 0 0 1 100 50 Z" fill="#4285F4"/> <!-- Blue -->
+  <path d="M50 50 L 100 50 A 50 50 0 0 1 50 100 Z" fill="#EA4335"/> <!-- Red -->
+  <path d="M50 50 L 50 100 A 50 50 0 0 1 0 50 Z" fill="#FBBC05"/> <!-- Yellow -->
+  <path d="M50 50 L 0 50 A 50 50 0 0 1 50 0 Z" fill="#34A853"/> <!-- Green -->
+
+  <!-- The "Black Hole" center -->
   <defs>
-    <path id="blade" d="M 50,50 C 50,25 40,15 50,5 C 60,15 50,25 50,50 Z" />
+    <radialGradient id="pulse" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="50%" stop-color="black" stop-opacity="1"/>
+      <stop offset="75%" stop-color="black" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="black" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <use href="#blade" fill="#4285F4" transform="rotate(0, 50, 50)" />
-  <use href="#blade" fill="#EA4335" transform="rotate(90, 50, 50)" />
-  <use href="#blade" fill="#FBBC05" transform="rotate(180, 50, 50)" />
-  <use href="#blade" fill="#34A853" transform="rotate(270, 50, 50)" />
-  <circle cx="50" cy="50" r="8" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <circle cx="50" cy="50" r="25" fill="url(#pulse)"/>
+  
+  <!-- Sparkles -->
+  <path d="M50,38 l 2,2 -2,2 -2,-2 z" fill="white" opacity="0.9"/>
+  <path d="M62,50 l 2,2 -2,2 -2,-2 z" fill="white" opacity="0.9"/>
+  <path d="M50,62 l 2,2 -2,2 -2,-2 z" fill="white" opacity="0.9"/>
+  <path d="M38,50 l 2,2 -2,2 -2,-2 z" fill="white" opacity="0.9"/>
 </svg>

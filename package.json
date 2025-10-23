@@ -1,6 +1,6 @@
 {
   "name": "@novapsis/n8n-nodes-novapsis",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Un nodo para n8n que se conecta al microservicio Power Scraper para extraer el HTML de cualquier página web.",
   "keywords": [
     "n8n-community-node-package",
