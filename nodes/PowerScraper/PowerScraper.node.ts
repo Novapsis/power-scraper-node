@@ -12,7 +12,7 @@ export class PowerScraper implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Power Scraper',
 		name: 'powerScraper',
-		icon: { light: 'file:PowerScraper.png', dark: 'file:PowerScraper.png' },		group: ['Novapsis'],
+		icon: { light: 'file:PowerScraper.svg', dark: 'file:PowerScraper.svg' },		group: ['Novapsis'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
 		description: 'Power Scraper: Una navaja suiza para extraer datos de la web.',
