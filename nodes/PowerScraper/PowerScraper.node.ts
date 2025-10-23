@@ -7,16 +7,12 @@ import {
 	IHttpRequestOptions,
 	NodeOperationError,
 } from 'n8n-workflow';
-import { icon } from './PowerScraper.icon';
-
-
 
 export class PowerScraper implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Power Scraper',
 		name: 'powerScraper',
-		icon: { light: icon, dark: icon }, 
-		group: ['Novapsis'],
+		icon: { light: 'file:PowerScraper.png', dark: 'file:PowerScraper.png' },		group: ['Novapsis'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
 		description: 'Power Scraper: Una navaja suiza para extraer datos de la web.',
