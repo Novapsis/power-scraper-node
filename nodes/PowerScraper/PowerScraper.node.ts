@@ -15,7 +15,7 @@ export class PowerScraper implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Power Scraper',
 		name: 'powerScraper',
-		icon, 
+		icon: { light: icon, dark: icon }, 
 		group: ['Novapsis'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
